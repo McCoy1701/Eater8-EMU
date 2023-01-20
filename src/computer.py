@@ -7,18 +7,18 @@ class Computer:
 
 
     def reset(self):
-        self.A = 0                                #8-bits register a
-        self.B = 0                                #8-bits register b
+        self.A = 0                                   #8-bits register a
+        self.B = 0                                   #8-bits register b
 
-        self.output = 0                           #8-bits output register
+        self.output = 0                              #8-bits output register
 
-        self.instructionRegister = 0              #8-bits
-        self.programCounter = 0                   #4-bits
-        self.carryFlag = False                    #1-bit
-        self.zeroFlag = False                     #1-bit
-        self.halt = False                         #1-bit
+        self.instructionRegister = 0                 #8-bits
+        self.programCounter = 0                      #4-bits
+        self.carryFlag = False                       #1-bit
+        self.zeroFlag = False                        #1-bit
+        self.halt = False                            #1-bit
 
-        self.ram = [0] * 16                       #16-bits of RAM
+        self.ram = [0] * 16                          #16-bits of RAM
 
 
     def debug(self, level = 'ALL'):
@@ -47,19 +47,19 @@ class Computer:
 
     def load(self, filename):
         if filename == '':
-            self.ram[0x00] = 0x1f        #LDA 0x0F
-            self.ram[0x01] = 0x2e        #ADD 0x0E
-            self.ram[0x02] = 0x79        #JC 0x09
-            self.ram[0x03] = 0xe0        #OUT
-            self.ram[0x04] = 0x4f        #STA 0x0F
-            self.ram[0x05] = 0x1e        #LDA 0x0E
-            self.ram[0x06] = 0x2d        #ADD 0x0D
-            self.ram[0x07] = 0x4e        #STA 0x0E
-            self.ram[0x08] = 0x60        #JMP 0x00
-            self.ram[0x09] = 0x50        #LDI 0x00
-            self.ram[0x0a] = 0x4f        #STA 0x0F
-            self.ram[0x0b] = 0x1d        #LDA 0x0D
-            self.ram[0x0c] = 0x4e        #STA 0x0E
+            self.ram[0x00] = 0x1f         #LDA 0x0F
+            self.ram[0x01] = 0x2e         #ADD 0x0E
+            self.ram[0x02] = 0x79         #JC 0x09
+            self.ram[0x03] = 0xe0         #OUT
+            self.ram[0x04] = 0x4f         #STA 0x0F
+            self.ram[0x05] = 0x1e         #LDA 0x0E
+            self.ram[0x06] = 0x2d         #ADD 0x0D
+            self.ram[0x07] = 0x4e         #STA 0x0E
+            self.ram[0x08] = 0x60         #JMP 0x00
+            self.ram[0x09] = 0x50         #LDI 0x00
+            self.ram[0x0a] = 0x4f         #STA 0x0F
+            self.ram[0x0b] = 0x1d         #LDA 0x0D
+            self.ram[0x0c] = 0x4e         #STA 0x0E
             self.ram[0x0d] = 1
             self.ram[0x0e] = 1
             self.ram[0x0f] = 0
@@ -80,7 +80,6 @@ class Computer:
 
             except FileNotFoundError:
                 print(f'file not found: {filename}')
-
 
 
     def _step(self, speed):
@@ -156,4 +155,5 @@ class Computer:
 
         except IndexError:
             print('EOM')                          #End Of Memory
+
 
